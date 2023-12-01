@@ -23,8 +23,7 @@ public class Bootstrap_DropDowns {
         driver.get(url);
 
         // ATTEMPTING TO USE SELECT CLASS
-        // WebElement dropDown = driver.findElement(By.xpath("//button[@class='btn
-        // btn-sm dropdown-toggle btn-outline-dark']"));
+        // WebElement dropDown = driver.findElement(By.xpath("//button[@class='btn btn-sm dropdown-toggle btn-outline-dark']"));
 
         // Select select = new Select(dropDown);
         // select.selectByVisibleText("Option 1");
