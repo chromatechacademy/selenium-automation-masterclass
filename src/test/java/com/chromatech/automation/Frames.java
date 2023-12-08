@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class Frames {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         /*
          * TOPIC: HANDLING FRAMES
          */
@@ -26,19 +26,26 @@ public class Frames {
         actions.moveToElement(restAPILink).perform();
 
         // LOCATING FRAME WITH XPATH
-        WebElement frame = driver.findElement(By.id("courses-iframe"));
+        // WebElement frame = driver.findElement(By.xpath("//iframe[@name='iframe-name']"));
 
         // SWITCHING TO FRAME USING WEB ELEMENT
         // driver.switchTo().frame(frame);
 
-        // SWITHING TO FRAME BY INDEX
+        // SWITCHING TO FRAME BY INDEX
         // driver.switchTo().frame(0);
 
         // SWITCHING TO FRAME BY NAME OR ID
-        //driver.switchTo().frame("courses-iframe");
+        driver.switchTo().frame("iframe-name");
 
         WebElement frameMenuButon = driver.findElement(By.xpath("(//button[@aria-label='mobile-menu'])[1]"));
         frameMenuButon.click();
+
+        // SWITCHING TO THE MAIN PAGE USING defaultContent() method
+        driver.switchTo().defaultContent();
+        restAPILink.click();
+
+        Thread.sleep(2000);
+        driver.quit();
     }
 
 }
