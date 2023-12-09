@@ -21,9 +21,9 @@ public class FindElements {
         String url = "https://chroma-tech-academy.mexil.it/static_page/";
         driver.get(url);
 
-        List<WebElement> links = driver.findElements(By.tagName("aaa"));
+        List<WebElement> links = driver.findElements(By.tagName("aaaa"));
         // RETRIEVING NUMBER OF LINKS ON A WEB PAGE
-        // System.out.println(links.size());
+        System.out.println(links.size());
 
         // PRINTING TEXT OF ALL LINKS
         // for (WebElement link : links) {
