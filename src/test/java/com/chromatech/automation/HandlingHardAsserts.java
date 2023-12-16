@@ -6,13 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.asserts.SoftAssert;
+import org.testng.Assert;
 
-public class Soft_Assertions {
+public class HandlingHardAsserts {
 
     public static void main(String[] args) {
         /*
-         * TOPIC: SOFT ASSERTS
+         * TOPIC: HANDLING HARD ASSERTS
          */
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -31,27 +31,21 @@ public class Soft_Assertions {
         WebElement actualInstructorJohnText = driver.findElement(By.xpath("(//*[contains(text(),'John')])[1]"));
         String expectedInstructorJohnText = "John";
 
-        // STEP 1: CREATE AN OBJECT/INSTANCE OF THE SOFT ASSERT CLASS
-        SoftAssert softAssert = new SoftAssert();
+        try {
+            Assert.assertEquals(actualPageTitle, expectedPageTitle);
+        } catch (AssertionError e) {
+            e.printStackTrace();
+        }
 
-        // STEP 2: PERFORM ASSERTIONS
+        try {
+            Assert.assertEquals(actualPageURL, expectedPageURL);
+        } catch (AssertionError e) {
+            e.printStackTrace();
+        }
 
-        // VERIFYING PAGE TITLE
-        softAssert.assertEquals(actualPageTitle, expectedPageTitle);
-
-        // VERIFYING PAGE URL
-        softAssert.assertEquals(actualPageURL, expectedPageURL);
-
-        // VERIFYING INSTRUCTOR JOHN TEXT
-        softAssert.assertEquals(actualInstructorJohnText.getText(), expectedInstructorJohnText);
-
-        softAssert.assertTrue(actualInstructorJohnText.getText().contains("something"), "-- VERIFYING JOHN TEXT USING SOFT ASSERT TRUE --");
-
-        softAssert.assertAll();
-
+        Assert.assertEquals(actualInstructorJohnText.getText(), expectedInstructorJohnText);
 
         driver.quit();
-
 
     }
 
